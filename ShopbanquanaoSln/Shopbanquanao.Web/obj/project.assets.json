@@ -3099,11 +3099,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web\\Shopbanquanao.Web.csproj",
+      "projectUniqueName": "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web\\Shopbanquanao.Web.csproj",
       "projectName": "Shopbanquanao.Web",
-      "projectPath": "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web\\Shopbanquanao.Web.csproj",
+      "projectPath": "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web\\Shopbanquanao.Web.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web\\obj\\",
+      "outputPath": "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3120,8 +3120,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj": {
-              "projectPath": "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj"
+            "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj": {
+              "projectPath": "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj"
             }
           }
         }

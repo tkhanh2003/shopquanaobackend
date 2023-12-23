@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj": {}
+    "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj": {}
   },
   "projects": {
-    "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj": {
+    "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj",
+        "projectUniqueName": "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj",
         "projectName": "Shopbanquanao.Web.API",
-        "projectPath": "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj",
+        "projectPath": "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\obj\\",
+        "outputPath": "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

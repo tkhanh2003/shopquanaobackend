@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ez5FVjYejabF+0UZME4rG6mVINUJhtJjeem7ywWtqp60qahU4t1UlIlq7SUm2Ab04cSCUah0GeGXI8WhgtHhgA==",
+  "dgSpecHash": "9M/1ZcbVHqS1eHc2llDzGJ+tFv1TnR8gYE0Yn3z7Dtd8OlDgvyqlHPGme62yRmWiLZ9VIDbApaNNff+HPWQZDg==",
   "success": true,
-  "projectFilePath": "K:\\KTDKBACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj",
+  "projectFilePath": "K:\\KTCK_BACKEND\\ShopbanquanaoSln\\Shopbanquanao.Web.API\\Shopbanquanao.Web.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
