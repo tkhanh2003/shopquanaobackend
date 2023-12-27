@@ -3,45 +3,42 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { firestore } from "../firebaseConfig";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 interface Product {
-  DocId: string;
-  Anh: string;
-  Gia: number;
-  Mo_ta: string;
-  Phan_loai: 1;
-  Ten_san_pham: string;
-  id_sanpham: string;
+  id: string;
+  image: string;
+  price: number;
+  categoryId: 1;
+  name: string;
 }
 
 const AdminPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  useEffect(() => {
-    // Tạo một hàm async để fetch dữ liệu từ Firestore
     const fetchData = async () => {
-      try {
-        const productRef = await firestore.collection("Product").get();
-        const productsData = productRef.docs.map((doc) => ({
-          DocId: doc.id,
-          Anh: doc.data().Anh,
-          Gia: doc.data().Gia,
-          Mo_ta: doc.data().Mo_ta,
-          Phan_loai: doc.data().Phan_loai,
-          Ten_san_pham: doc.data().Ten_san_pham,
-          id_sanpham: doc.data().id_sanpham,
-        }));
-        setProducts(productsData);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
+        axios.get(`http://localhost:5047/GetAllProducts`)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                setProducts(res.data);
+            })
     };
+    useEffect(() => {
+   
+    
 
     // Gọi hàm fetchData
     fetchData();
-  }, []); // [] đảm bảo hàm useEffect chỉ gọi một lần khi component mount
-  const handleDeleteProduct = async (docId: any) => {
+  }, []);
+    const handleDeleteProduct = async (docId: any) => {
+        axios.delete(`http://localhost:5047/ProductDelete/` + docId)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                fetchData();
+            })
     try {
       await firestore.collection("Product").doc(docId).delete();
-      setProducts(products.filter((product) => product.DocId !== docId));
+      setProducts(products.filter((product) => product.id !== docId));
     } catch (error) {
       console.error("Error deleting product: ", error);
     }
@@ -180,18 +177,18 @@ const AdminPage: React.FC = () => {
           {products.map((product) => (
             <tbody>
               <tr>
-                <td>{product.id_sanpham}</td>
-                <td>{product.Ten_san_pham}</td>
+                <td>{product.id}</td>
+                <td>{product.name}</td>
                 <td>
                   <img
-                    src={product.Anh}
+                    src={product.image}
                     alt="Hình ảnh sản phẩm"
                     style={{ width: "200px", height: "200px" }}
                   />
                 </td>
-                <td>{product.Gia}</td>
+                <td>{product.price}</td>
                 <td>
-                  <Link to={`/edit/${product.DocId}`}>
+                  <Link to={`/edit/${product.id}`}>
                     <button className="btn btn-info btn-sm">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -211,7 +208,7 @@ const AdminPage: React.FC = () => {
                   </Link>
                   <button
                     className="btn btn-danger btn-sm"
-                    onClick={() => handleDeleteProduct(product.DocId)}
+                    onClick={() => handleDeleteProduct(product.id)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

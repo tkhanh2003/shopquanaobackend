@@ -28,28 +28,28 @@ const AppRoutes = [
      element: <AddProductPage/>
     },
     {
-        path: "/edit",
-        Element: <EditProductPage/>
+        path: "/edit/:id",
+        element: <EditProductPage/>
     },
     {
         path: "/login",
-        Element: <AdminLogin/>
+        element: <AdminLogin/>
     },
     {
         path: "/Single_product",
-        Element: <Single_product/>
+        element: <Single_product/>
     },
     {
         path: "/Cart",
-        Element: <Cart/>
+        element: <Cart/>
     },
     {
         path: "/Home",
-        Element: <Home/>
+        element: <Home/>
     },
     {
         path: "/Header",
-        Element: <Header/>
+        element: <Header/>
     },
 
 ];

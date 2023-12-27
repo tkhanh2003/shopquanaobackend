@@ -1,42 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { firestore } from "../firebaseConfig";
+import axios from "axios";
+
 
 const EditProductPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    Ten_san_pham: "",
-    Gia: "",
-    Anh: "",
-    Mo_ta: "",
-    Phan_loai: "",
+    const [formData, setFormData] = useState({
+    name: "",
+    price: "",
+    image: "",
+    categoryId: "",
   });
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const productRef = await firestore.collection("Product").doc(id).get();
-        const productData = productRef.data();
+          axios.get(`http://localhost:5047/ProductById/` + id)
+              .then(res => {
+                  console.log(res);
+                  console.log(res.data);
+                  setFormData({
+                      name: (res.data.name || "") as string,
+                      price: (res.data.price || "") as string,
+                      image: (res.data.image || "") as string,
+                      categoryId: (res.data.categoryId || "") as string,
+                  });
+              })
 
-        if (productData) {
-          setFormData({
-            Ten_san_pham: productData.Ten_san_pham || "",
-            Gia: productData.Gia || "",
-            Anh: productData.Anh || "",
-            Mo_ta: productData.Mo_ta || "",
-            Phan_loai: productData.Phan_loai || "",
-          });
-        } else {
-          console.error("Không tìm thấy sản phẩm với id đã cho.");
-        }
-      } catch (error) {
-        console.error("Lỗi khi lấy dữ liệu sản phẩm: ", error);
-      }
-    };
 
-    fetchProduct();
-  }, [id]);
+      });
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -46,16 +38,15 @@ const EditProductPage = () => {
     });
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-
-    try {
-      await firestore.collection("Product").doc(id).update(formData);
-      alert("Sản phẩm đã được cập nhật thành công!");
-      navigate("/dashboard");
-    } catch (error) {
-      console.error("Lỗi khi cập nhật sản phẩm: ", error);
-    }
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        axios.post(`http://localhost:5047/UpdateProduct`, formData)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                alert("Product added successfully!");
+                navigate("/dashboard");
+            })
   };
 
   return (
@@ -63,57 +54,46 @@ const EditProductPage = () => {
       <h2>Chỉnh Sửa Sản Phẩm</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="tenSanPham">Tên Sản Phẩm:</label>
+          <label htmlFor="name">Tên Sản Phẩm:</label>
           <input
             type="text"
-            id="tenSanPham"
-            name="Ten_san_pham"
-            className="form-control"
-            value={formData.Ten_san_pham}
+            id="name"
+            name="name"
+                      className="form-control"
+                      value={formData.name}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="gia">Giá:</label>
+          <label htmlFor="price">Giá:</label>
           <input
             type="text"
-            id="gia"
-            name="Gia"
-            className="form-control"
-            value={formData.Gia}
+            id="price"
+            name="price"
+                      className="form-control"
+                      value={formData.price}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="anh">Link Ảnh:</label>
+          <label htmlFor="image">Link Ảnh:</label>
           <input
             type="text"
-            id="anh"
-            name="Anh"
-            className="form-control"
-            value={formData.Anh}
+            id="image"
+            name="image"
+                      className="form-control"
+                      value={formData.image}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="mota">Mô tả:</label>
+          <label htmlFor="categoryId">Phân loại:</label>
           <input
             type="text"
-            id="mota"
-            name="Mo_ta"
-            className="form-control"
-            value={formData.Mo_ta}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="pl">Phân loại:</label>
-          <input
-            type="text"
-            id="pl"
-            name="Phan_loai"
-            className="form-control"
-            value={formData.Phan_loai}
+            id="categoryId"
+            name="categoryId"
+                      className="form-control"
+                      value={formData.categoryId}
             onChange={handleChange}
           />
         </div>

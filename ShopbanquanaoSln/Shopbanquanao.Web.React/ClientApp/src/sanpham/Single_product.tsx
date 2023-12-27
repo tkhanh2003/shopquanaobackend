@@ -12,8 +12,7 @@ import { useDispatch } from 'react-redux';
 
 interface Product {
   Anh: string;
-  Gia: number;
-  Mo_ta: string;
+    Gia: number;
   Phan_loai: string;
   Ten_san_pham: string;
   id_sanpham: string;
@@ -106,8 +105,6 @@ function Single_product() {
                         <h1 style={{ marginTop: '50px', marginBottom: '10px' }}>{product.Ten_san_pham}</h1>
                         <p style={{ marginBottom: '10px' }}><span style={{ fontSize: '25px', fontWeight: 'bold' }}>Giá : </span>
                         <span style={{ fontSize: '25px' }}>{product.Gia}$</span></p>
-                        <p style={{ marginBottom: '10px' }}><span style={{ fontSize: '25px', fontWeight: 'bold' }}>Mô tả : </span>
-                        <span style={{ fontSize: '20px' }}>{product.Mo_ta}</span></p>
                       </div>
                     )}
                   </div>

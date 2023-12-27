@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import "../assets/css/AddProductPage.css";
 import { firestore } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const AddProductPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    id_sanpham: "",
-    Ten_san_pham: "",
-    Gia: "",
-    Anh: "",
-    Mo_ta: "",
-    Phan_loai: "",
+      Id: "",
+      Name: "",
+      Price: "",
+      Image: "",
+    CategoryId: "",
   });
 
   const handleChange = (e: any) => {
@@ -22,16 +22,16 @@ const AddProductPage = () => {
     });
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
 
-    try {
-      await firestore.collection("Product").add(formData);
-      alert("Product added successfully!");
-      navigate("/dashboard");
-    } catch (error) {
-      console.error("Error adding product: ", error);
-    }
+        axios.post(`http://localhost:5047/AddProducts`, formData)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                alert("Product added successfully!");
+                navigate("/dashboard");
+            })
   };
 
   return (
@@ -39,68 +39,57 @@ const AddProductPage = () => {
       <h2>Thêm Sản Phẩm</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="id_sanpham">Id sản phẩm:</label>
+          <label htmlFor="Id">Id sản phẩm:</label>
           <input
             type="text"
-            id="id_sanpham"
-            name="id_sanpham"
+            id="Id"
+            name="Id"
             className="form-control"
-            value={formData.id_sanpham}
+            value={formData.Id}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="tenSanPham">Tên Sản Phẩm:</label>
+          <label htmlFor="Name">Tên Sản Phẩm:</label>
           <input
             type="text"
-            id="tenSanPham"
-            name="Ten_san_pham"
-            className="form-control"
-            value={formData.Ten_san_pham}
+            id="Name"
+            name="Name"
+                      className="form-control"
+                      value={formData.Name}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="gia">Giá:</label>
+          <label htmlFor="Price">Giá:</label>
           <input
             type="text"
-            id="gia"
-            name="Gia"
-            className="form-control"
-            value={formData.Gia}
+            id="Price"
+            name="Price"
+                      className="form-control"
+                      value={formData.Price}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="anh">Link Ảnh:</label>
+          <label htmlFor="Image">Link Ảnh:</label>
           <input
             type="text"
-            id="anh"
-            name="Anh"
-            className="form-control"
-            value={formData.Anh}
+            id="Image"
+            name="Image"
+                      className="form-control"
+                      value={formData.Image}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="mota">Mô tả:</label>
+          <label htmlFor="CategoryId">Phân loại:</label>
           <input
             type="text"
-            id="mota"
-            name="Mo_ta"
-            className="form-control"
-            value={formData.Mo_ta}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="pl">Phân loại:</label>
-          <input
-            type="text"
-            id="pl"
-            name="Phan_loai"
-            className="form-control"
-            value={formData.Phan_loai}
+            id="CategoryId"
+            name="CategoryId"
+                      className="form-control"
+                      value={formData.CategoryId}
             onChange={handleChange}
           />
         </div>
