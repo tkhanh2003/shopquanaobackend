@@ -17,7 +17,7 @@ import { PersistGate } from "redux-persist/integration/react";
 let persistor = persistStore(store);
 const Layout = () => {
   return (
-    <Provider store={store}>
+    <Provider store={store}>    
       <PersistGate persistor={persistor}>
       <Routes>
         <Route path="/" element={<Home />} />
